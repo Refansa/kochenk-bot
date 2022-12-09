@@ -1,0 +1,45 @@
+{
+    "name": "kochenk-bot",
+    "version": "0.0.1",
+    "author": "Muhammad Refansa Ali Muzky <m.refansa.am@gmail.com>",
+    "description": "A General purpose discord bot written with TypeScript.",
+    "license": "MIT",
+    "private": true,
+    "engines": {
+        "node": ">=19.1.0"
+    },
+    "type": "module",
+    "exports": [
+        "./dist/start.js"
+    ],
+    "scripts": {
+        "test": "echo \"No test command specified\"",
+        "lint": "eslint . --fix --cache --ext .js,.jsx,.ts,.tsx",
+        "format": "prettier --write .",
+        "build": "tsc --project tsconfig.json",
+        "dev": "tsc-watch --build --onSuccess \"node --enable-source-maps dist/start.js\""
+    },
+    "keywords": [
+        "bot",
+        "discord-bot",
+        "discord.js"
+    ],
+    "devDependencies": {
+        "@types/node": "^18.11.12",
+        "@typescript-eslint/eslint-plugin": "^5.46.0",
+        "@typescript-eslint/parser": "^5.46.0",
+        "eslint": "^8.29.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-unicorn": "^45.0.1",
+        "prettier": "2.8.1",
+        "tsc-watch": "^6.0.0",
+        "typescript": "^4.9.4"
+    },
+    "dependencies": {
+        "discord.js": "^14.7.1",
+        "discord.js-rate-limiter": "^1.3.2",
+        "node-fetch": "^3.3.0",
+        "pino": "^8.7.0",
+        "pino-pretty": "^9.1.1"
+    }
+}
