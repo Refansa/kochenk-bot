@@ -17,7 +17,8 @@
         "lint": "eslint . --fix --cache --ext .js,.jsx,.ts,.tsx",
         "format": "prettier --write .",
         "build": "tsc --project tsconfig.json",
-        "dev": "tsc-watch --build --onSuccess \"node --enable-source-maps dist/start.js\""
+        "dev": "tsc-watch --build --onSuccess \"node --enable-source-maps dist/start.js register\"",
+        "commands:clear": "npm run build && node --enable-source-maps dist/start.js clear"
     },
     "keywords": [
         "bot",

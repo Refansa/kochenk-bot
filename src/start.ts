@@ -15,7 +15,7 @@ async function start(): Promise<void> {
     try {
         const rest = new REST({ version: '10' }).setToken(Config.client.token);
         const commandRegistrationService = new CommandRegistrationService(rest);
-        await commandRegistrationService.process(client);
+        await commandRegistrationService.process(client, process.argv);
     } catch (err) {
         Logger.error(err);
         process.exit();

@@ -11,7 +11,10 @@ import { Logger } from './logger.js';
 export class CommandRegistrationService {
     constructor(private rest: REST) {}
 
-    public async process(client: CustomClient): Promise<void> {
+    public async process(
+        client: CustomClient,
+        argv: string[],
+    ): Promise<void> {
         const commands = [];
 
         const commandsPath = fileURLToPath(
@@ -36,18 +39,36 @@ export class CommandRegistrationService {
             }
         }
 
-        (async () => {
-            try {
-                Logger.info(`Started refreshing ${commands.length} application (/) commands.`);
+        switch (argv[2]) {
+            case 'register':
+                try {
+                    Logger.info(`Started refreshing ${commands.length} application (/) commands.`);
 
-                await this.rest.put(Routes.applicationCommands(Config.client.id), {
-                    body: commands,
-                });
+                    await this.rest.put(Routes.applicationCommands(Config.client.id), {
+                        body: commands,
+                    });
 
-                Logger.info(`Successfully reloaded ${commands.length} application (/) commands.`);
-            } catch (err) {
-                Logger.error(err);
-            }
-        })();
+                    Logger.info(
+                        `Successfully reloaded ${commands.length} application (/) commands.`
+                    );
+                } catch (err) {
+                    Logger.error(err);
+                }
+                break;
+
+            case 'clear':
+                try {
+                    Logger.info(`Started clearing all application (/) commands.`);
+
+                    await this.rest.put(Routes.applicationCommands(Config.client.id), {
+                        body: [],
+                    });
+
+                    Logger.info(`Successfully cleared all application (/) commands.`);
+                } catch (err) {
+                    Logger.error(err);
+                }
+                process.exit();
+        }
     }
 }
