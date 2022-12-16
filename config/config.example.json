@@ -1,0 +1,16 @@
+{
+    "developers": ["<YOUR_DISCORD_ID>"],
+    "guild": {
+        "id": "<DEV_GUILD_ID>"
+    },
+    "client": {
+        "id": "<YOUR_BOT_ID>",
+        "token": "<YOUR_BOT_TOKEN>"
+    },
+    "logging": {
+        "pretty": true,
+        "rateLimit": {
+            "minTimeout": 30
+        }
+    }
+}

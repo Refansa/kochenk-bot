@@ -1,1 +1,1 @@
-export { Config } from './config.js';
+export { Config, ConfigInterface } from './config.js';
