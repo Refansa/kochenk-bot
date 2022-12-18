@@ -6,6 +6,8 @@ export class CustomClient extends Client {
     constructor(clientOptions: ClientOptions) {
         super(clientOptions);
     }
-
+    
+    openAPI: any;
+    
     public commands: Collection<string, Command> = new Collection();
 }

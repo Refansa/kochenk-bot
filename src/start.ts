@@ -1,3 +1,4 @@
+import { ChatGPTAPIBrowser } from 'chatgpt';
 import { GatewayIntentBits, REST } from 'discord.js';
 
 import { CustomClient } from './extensions/custom-client.js';
@@ -13,6 +14,16 @@ async function start(): Promise<void> {
     const bot = new Bot(Config.client.token, client);
 
     try {
+        const api = new ChatGPTAPIBrowser({
+            email: 'is.tumbleweed@gmail.com',
+            password: 'TheWanderingAmbush',
+            markdown: false,
+        });
+
+        await api.initSession();
+
+        client.openAPI = api;
+
         const rest = new REST({ version: '10' }).setToken(Config.client.token);
         const commandRegistrationService = new CommandRegistrationService(rest);
         await commandRegistrationService.process(client, process.argv);
